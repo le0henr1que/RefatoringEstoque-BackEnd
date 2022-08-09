@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  server:
+    container_name: NODEJS_SERVER_MEDIUM
+    restart: always
+    env_file:
+        - .env
+    build: '.'
+    volumes:
+      - ./:/node-app
+      - ./node_modules:/node-app/node_modules
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - '${PORT}:${PORT}'
+
+    
+      
+
+  db:
+    image: 'mongo'
+    container_name: MONGODB_MEDIUM
+    ports:
+      - '${DB_PORT}:${DB_PORT}'
+    volumes:
+      - ./data/db:/data/db
+   
