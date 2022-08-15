@@ -24,7 +24,12 @@ services:
 
   db:
     image: 'mongo'
+    env_file:
+      - .env
     container_name: MONGODB_MEDIUM
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
     ports:
       - '${DB_PORT}:27017'
     volumes:
