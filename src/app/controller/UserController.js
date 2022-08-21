@@ -7,20 +7,18 @@ class UserController {
         console.log(req.body)
     }
     async show(req, res){
-        // await userModel.find({User})
-        // .then(response => {
-        //     return res.status(200).json(response);
-        // })
-        // .catch(error => {
-        //         return req.status(500).json(error)
-        //     }
+        await User.find()
+        .then(response => {
+            return res.status(200).json(response);
+        })
+        .catch(error => {
+                return req.status(500).json(error)
+            }
 
-        // )
+        )
     }
     async store(req, res){
 
-
-        
         let schema = yup.object().shape({
             name: yup.string().required(),
             email: yup.string().email().required(), 
@@ -46,10 +44,10 @@ class UserController {
         }
 
 
-        const {name, email, password} = req.body;
+        const {name, email, password, area} = req.body;
 
 
-        const data = { name,  email,  password }
+        const data = { name,  email,  password, area }
 
         
 
