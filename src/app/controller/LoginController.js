@@ -27,7 +27,8 @@ class LoginController {
         return res.status(200).json({
             user:{
                 name: userExist.name,
-                email: userExist.email
+                email: userExist.email,
+                area: userExist.area
             }, 
             token:jwt.sign({id:userExist._id}, config.secret, {expiresIn:config.expireIn})
         })
