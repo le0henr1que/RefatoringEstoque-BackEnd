@@ -8,7 +8,7 @@ const routes = new Router()
 
 routes.get("/user", AuthMidleware, UserController.show)
 routes.post("/user", AuthMidleware, UserController.store)
-
+routes.put('/user/:id', AuthMidleware, UserController.update);
 
 routes.post("/login", LoginController.index)
 

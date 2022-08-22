@@ -6,6 +6,15 @@ class UserController {
     index(req, res){
         console.log(req.body)
     }
+    async update(req, res){
+        await User.findByIdAndUpdate({'_id': req.params.id}, req.body, {new: true})
+        .then(response =>{
+            return res.status(200).json({error:false, message:'Atualizado Com Sucesso!', resposta: response})
+        }).catch(error => {
+            return res.status(400).json({error:false, message:'Erro ao Atualizar Usuario!', erro:error})
+        })
+    }
+
     async show(req, res){
         await User.find()
         .then(response => {
