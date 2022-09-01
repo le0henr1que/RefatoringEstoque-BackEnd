@@ -39,6 +39,15 @@ class InventoryController {
             return req.status(500).json(error)
         })
     }
+    
+    async update(req, res){
+        await Inventory.findByIdAndUpdate({'_id': req.params.id}, req.body, {new: true})
+        .then(response =>{
+            return res.status(200).json({error:false, message:'Produto Atualizado com Sucesso!'})
+        }).catch(error => {
+            return res.status(400).json({error:true, message:'Erro ao tentar atualizar produto', error:error})
+        })
+    }
 
 }
 

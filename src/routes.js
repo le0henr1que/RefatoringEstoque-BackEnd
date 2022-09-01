@@ -15,6 +15,9 @@ routes.put('/user/:id', AuthMidleware, UserController.update);
 //Inventory Controller
 routes.post("/inventory", AuthMidleware, InventoryController.create)
 routes.get("/showInventory", AuthMidleware, InventoryController.showInventory)
+routes.put("/updateInventory/:id", AuthMidleware, InventoryController.update)
+
+
 
 
 routes.post("/login", LoginController.index)
