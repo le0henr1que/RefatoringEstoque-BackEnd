@@ -1,12 +1,14 @@
 const  mongoose  = require("mongoose");
 require('dotenv').config()
 
+
 class Connection {
     constructor(){
         this.dataBaseConnectionMongoDB();
     }
     dataBaseConnectionMongoDB(){
-        this.mongoDBConnection = mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.puymz.mongodb.net/?retryWrites=true&w=majority`)
+        console.log(process.env.DB_USER)
+        this.mongoDBConnection = mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.puymz.mongodb.net/?retryWrites=true&w=majority`)
         // this.mongoDBConnection = mongoose.connect("mongodb://localhost:27017/nodejs")
         .then(() => {
             console.log("Conexão estabelecida com Sucesso com o mongoDB");

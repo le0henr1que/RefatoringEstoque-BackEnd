@@ -1,9 +1,9 @@
 const app = require('../app');
 const http = require("http")
-const { server } = require('socket.io')
+const { Server } = require('socket.io')
 require('dotenv').config()
 
 const serverHttp = http.createServer(app)
-const io = new server(serverHttp)
+const io = new Server(serverHttp)
 
-export {serverHttp, io}
+module.exports = {serverHttp, io}
