@@ -1,9 +1,11 @@
 const {Router} = require('express')
 
+
 const UserController = require('./app/controller/UserController')
 const InventoryController = require('./app/controller/InventoryController')
 const LoginController = require('./app/controller/LoginController')
 const AuthMidleware = require("../src/app/middlewares/AuthMidleware")
+const SocketController = require('./app/controller/SocketController')
 
 const routes = new Router()
 
@@ -16,7 +18,6 @@ routes.put('/user/:id', AuthMidleware, UserController.update);
 routes.post("/inventory", AuthMidleware, InventoryController.create)
 routes.get("/showInventory", AuthMidleware, InventoryController.showInventory)
 routes.put("/updateInventory/:id", AuthMidleware, InventoryController.update)
-
 
 
 

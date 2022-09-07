@@ -1,7 +1,7 @@
 const Inventory = require('../models/Inventory')
 // const bcrypt = require('bcryptjs')
 const yup = require('yup');
-const { response } = require('../../app');
+// const { response } = require('../../app');
 // const { default: shape } = require('@material-ui/core/styles/shape');
 
 class InventoryController {
