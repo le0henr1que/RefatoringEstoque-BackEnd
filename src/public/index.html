@@ -22,8 +22,13 @@
     // var socket = io('http://localhost:4000');
     var socket = io('/');
     
+    var url = document.URL
+    var idProd = document.URL.split('=')[1]
     
-    socket.on('connect', () => console.log('[IO] Connect => A new connection has been established'))
+
+    socket.emit('idProd', idProd);
+
+    socket.on('connect', () => console.log('[IO] Connect => A new connection has been established '+idProd))
   
   </script>
 </body>

@@ -39,7 +39,15 @@ class InventoryController {
             return req.status(500).json(error)
         })
     }
-    
+    async showProduct(req, res){
+        await Inventory.find({'_id': req.params.id})
+        .then(response => {
+            return res.status(200).json(response);
+        }).catch(error => {
+            return req.status(500).json(error)
+        })
+    }
+
     async update(req, res){
         await Inventory.findByIdAndUpdate({'_id': req.params.id}, req.body, {new: true})
         .then(response =>{

@@ -24,7 +24,7 @@ app.set('views', path.join(__dirname, '../../public'));
 app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'html')
 
-app.get('/:id', (req, res) => {
+app.get('/', (req, res) => {
 //    console.log(req.params.id)
     res.render('index.html')
 })
@@ -35,4 +35,12 @@ app.get('/:id', (req, res) => {
 io.on('connection', socket => {
     console.log(`Socket conectado: ${socket.id}`);
     // console.log(idUser)
+
+      socket.on('idProd', data => {
+        console.log('data in backend'+data)
+       
+          socket.broadcast.emit('openModal', data)
+
+      });
+
   });
