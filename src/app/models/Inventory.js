@@ -5,6 +5,8 @@ const Inventory = mongoose.Schema(
         name:{type:String, required:true},
         description:{type:String, required:true},
         amount:{type:Number, required:true}, 
+        maxInventory:{type:Number, required:true}, 
+        minInventory:{type:Number, required:true}, 
     }, 
     {
         timestamps:true

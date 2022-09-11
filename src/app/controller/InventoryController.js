@@ -11,12 +11,14 @@ class InventoryController {
         let schema = yup.object().shape({
             name: yup.string().required(),
             description: yup.string().required(),
-            amount: yup.number().required()
+            amount: yup.number().required(), 
+            maxInventory:yup.number().required(), 
+            minInventory:yup.number().required()
         })
 
-        const {name, description, amount} = req.body
+        const {name, description, amount, maxInventory, minInventory} = req.body
 
-        const data = {name, description, amount}
+        const data = {name, description, amount, maxInventory, minInventory }
 
         await Inventory.create(data, (err) => {
             if(err)
